@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.bupt.indooranalysis.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +31,11 @@ public class InspectFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Spinner spinner;
+    private ArrayList<String> locationList;
+    private ArrayAdapter<String> arrayAdapter;
+    private String location;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +68,25 @@ public class InspectFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inspect, container, false);
+        View view = inflater.inflate(R.layout.fragment_inspect,container,false);
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+
+        locationList = new ArrayList<String>();
+        locationList.add("北邮科技大厦");
+        locationList.add("郑州大厦");
+        locationList.add("北航大楼");
+
+        arrayAdapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.simple_spinner_item,locationList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

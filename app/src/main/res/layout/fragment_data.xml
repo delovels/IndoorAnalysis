@@ -10,4 +10,6 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <include layout="@layout/bottom_menu_round" />
+
 </FrameLayout>

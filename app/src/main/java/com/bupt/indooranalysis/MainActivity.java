@@ -34,7 +34,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,InspectFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        InspectFragment.OnFragmentInteractionListener,
+        HistoryFragment.OnFragmentInteractionListener,
+        DataFragment.OnFragmentInteractionListener{
 
     private ViewPager mPager;
     private ArrayList<Fragment> mFragmentList = new ArrayList<Fragment>();
@@ -45,9 +48,7 @@ public class MainActivity extends AppCompatActivity
     private InspectFragment inspectFragment;
     private HistoryFragment historyFragment;
     private DataFragment dataFragment;
-
     private int currentIndex;
-    private int screenWidth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,17 +79,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        inspectFragment = new InspectFragment();
-//        historyFragment = new HistoryFragment();
-//        dataFragment = new DataFragment();
-//
-//        mFragmentList.add(inspectFragment);
-//        mFragmentList.add(historyFragment);
-//        mFragmentList.add(dataFragment);
+        inspectFragment = new InspectFragment();
+        historyFragment = new HistoryFragment();
+        dataFragment = new DataFragment();
 
-        mFragmentList.add(new InspectFragment());
-        mFragmentList.add(new InspectFragment());
-        mFragmentList.add(new InspectFragment());
+        mFragmentList.add(inspectFragment);
+        mFragmentList.add(historyFragment);
+        mFragmentList.add(dataFragment);
+
 
         fragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),mFragmentList);
         mPager.setAdapter(fragmentPagerAdapter);
@@ -103,30 +101,7 @@ public class MainActivity extends AppCompatActivity
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
                 Log.i("Init Component","onPageScrolled");
-//                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLine.getLayoutParams();
-//
-//                if (currentIndex == 0 && position == 0)// 0->1
-//                {
-//                    lp.leftMargin = (int) (positionOffset * (screenWidth * 1.0 / 3) + currentIndex
-//                            * (screenWidth / 3));
-//
-//                } else if (currentIndex == 1 && position == 0) // 1->0
-//                {
-//                    lp.leftMargin = (int) (-(1 - positionOffset)
-//                            * (screenWidth * 1.0 / 3) + currentIndex
-//                            * (screenWidth / 3));
-//
-//                } else if (currentIndex == 1 && position == 1) // 1->2
-//                {
-//                    lp.leftMargin = (int) (positionOffset * (screenWidth * 1.0 / 3) + currentIndex
-//                            * (screenWidth / 3));
-//                } else if (currentIndex == 2 && position == 1) // 2->1
-//                {
-//                    lp.leftMargin = (int) (-(1 - positionOffset)
-//                            * (screenWidth * 1.0 / 3) + currentIndex
-//                            * (screenWidth / 3));
-//                }
-//                mTabLine.setLayoutParams(lp);
+
             }
 
             @Override
