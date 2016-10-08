@@ -187,14 +187,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_history) {
             // Handle the History request
-
-            startActivity(new Intent(this,TabbedActivity.class));
+            onHistoryItemSelected();
         } else if (id == R.id.nav_data) {
-
+            onDataItemSelected();
         } else if (id == R.id.nav_setting) {
-
+            onSettingsItemSelected();
         } else if (id == R.id.nav_info) {
-
+            onSysteminfoItemSelected();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -205,4 +204,23 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void onHistoryItemSelected(){
+
+        startActivity(new Intent(this,TabbedActivity.class));
+    }
+
+    public void onSysteminfoItemSelected(){
+
+        startActivity(new Intent(this,AboutSystemActivity.class));
+    }
+
+    public void onSettingsItemSelected(){
+        startActivity(new Intent(this,SettingsActivity.class));
+
+    }
+
+    public void onDataItemSelected(){
+
+    }
+
 }
